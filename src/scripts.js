@@ -8,6 +8,7 @@ export class DayPicker{
     const parseDate= Date.parse(string);
     const dateObj= new Date(parseDate);
     this.dateObject=dateObj;
+
   }
 
   findDay(){
