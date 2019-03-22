@@ -12,3 +12,11 @@ body{
 .btn {
   width: 200px;
 }
+
+#inputName {
+  width:600px;
+}
+
+#inputAddress {
+  width: 600px;
+}
