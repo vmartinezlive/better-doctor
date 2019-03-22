@@ -5,37 +5,35 @@ import './styles.css';
 import { DoctorSearch } from "./scripts.js";
 
 
-$(document).ready(function(){
-  event.preventDefault();
-  $("#doctor-form").submit(function(event){
+$(document).ready(function() {
+  $('#doctor-form').submit(function(event) {
+    event.preventDefault();
+    const symptoms = $('#inputSymptoms').val();
+    const doctor = $('#inputDoctor').val();
+    // console.log(doctor);
 
-    const nameInput = $("#inputName").val();
-    const addressInput = $("#inputAddress").val();
-    const cityInput = $("#inputCity").val();
-    const stateInput = $("#inputState").val();
-    const zipInput = $("#inputZip").val();
-    let symptomsInput = $("#inputSymptoms").val();
-    let doctorInput = $("#inputDoctor").val();
-
+//
+//     // const nameInput = $("#inputName").val();
+//     // const addressInput = $("#inputAddress").val();
+//     // const cityInput = $("#inputCity").val();
+//     // const stateInput = $("#inputState").val();
+//     // const zipInput = $("#inputZip").val();
+//     let symptomsInput = $("#inputSymptoms").val();
+//     let doctorInput = $("#inputDoctor").val();
+//
     let newDoctorSearch = new DoctorSearch();
-    let promise = newEvent.getEvent(doctorInput)
+    let promise = newDoctorSearch.getDoctor()
+    // console.log(promise);
 
     promise.then(function(response) {
     let body =JSON.parse(response);
-    // console.log(body._embedded.events[0]);
+    console.log(body);
+    // console.log(body.meta.data.practices[]);
 
-    $('#results-nameInput').text(`${nameInput} next event is: ${body._embedded.events[0].name}`);
-    // $('#results-nameInput').text(`${nameInput} next event is: ${body._embedded.events[0].name}`);
-    // $('#results-bio').text(`Learn more about this artist: ${body.artists[0].strBiographyEN}`);
-    // setTimeout(function() {
-    //   $('#results-pic').html(`here is a picture <img src="${body.artists[0].strArtistFanart}">`);
-    // }, 3000);
+    $('#results1').text(`${symptoms}`);
+    $('#results2').text(`${doctor}`);
 }, function(error) {
-  $('.showErrors').text(`There was an error processing your request: ${error.message}`);
-  });
-
-
-
-
+    $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    });
   });
 });
