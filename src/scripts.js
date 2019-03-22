@@ -1,20 +1,18 @@
-export class DayPicker{
-  constructor(){
-    this.dateObject;
-    this.dayArray=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-  }
-
-  stringToObject(string){
-    const parseDate= Date.parse(string);
-    const dateObj= new Date(parseDate);
-    this.dateObject=dateObj;
-
-  }
-
-  findDay(){
-    const numberDay=this.dateObject.getDay();
-    const day=this.dayArray[numberDay+1];
-    return day;
-  }
+export class DoctorSearch {
+  getDoctor(doctor) {
+  return new Promise(function(resolve, reject) {
+    let request = new XMLHttpRequest();
+    let url = `http://theaudiodb.com/api/v1/json/${process.env.API_KEY}/search.php?s=${doctor}`;
+    request.onload = function() {
+      if (this.status === 200) {
+        resolve(request.response);
+      } else {
+        reject(Error(request.statusText));
+      }
+    }
+    request.open("GET", url, true);
+    request.send();
+  });
+}
 
 }
