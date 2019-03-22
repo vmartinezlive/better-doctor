@@ -17,10 +17,13 @@ $(document).ready(function(){
     let symptomsInput = $("#inputSymptoms").val();
     let doctorInput = $("#inputDoctor").val();
 
+    let newDoctorSearch = new DoctorSearch();
+    let promise = newEvent.getEvent(doctorInput)
 
     promise.then(function(response) {
     let body =JSON.parse(response);
-    console.log(body._embedded.events[0]);
+    // console.log(body._embedded.events[0]);
+
     $('#results-nameInput').text(`${nameInput} next event is: ${body._embedded.events[0].name}`);
     // $('#results-nameInput').text(`${nameInput} next event is: ${body._embedded.events[0].name}`);
     // $('#results-bio').text(`Learn more about this artist: ${body.artists[0].strBiographyEN}`);
@@ -30,6 +33,9 @@ $(document).ready(function(){
 }, function(error) {
   $('.showErrors').text(`There was an error processing your request: ${error.message}`);
   });
+
+
+
 
   });
 });
