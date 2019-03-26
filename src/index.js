@@ -22,15 +22,19 @@ $(document).ready(function() {
 //     let doctorInput = $("#inputDoctor").val();
 //
     let newDoctorSearch = new DoctorSearch();
-    let promise = newDoctorSearch.getDoctor()
-    // console.log(promise);
+    let promise = newDoctorSearch.getDoctor(symptoms, doctor)
+
 
     promise.then(function(response) {
     let body =JSON.parse(response);
     console.log(body);
+    let first_name = (`${body.data[0].profile.first_name}`);
+    let last_name = (`${body.data[0].profile.last_name}`);
+    const name = first_name + last_name;
     // console.log(body.meta.data.practices[]);
 
-    $('#results1').text(`${symptoms}`);
+    $('#results1').text(name);
+    console.log('results1');
     $('#results2').text(`${doctor}`);
 }, function(error) {
     $('.showErrors').text(`There was an error processing your request: ${error.message}`);
