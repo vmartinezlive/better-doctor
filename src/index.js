@@ -28,9 +28,15 @@ $(document).ready(function() {
     promise.then(function(response) {
     let body =JSON.parse(response);
     console.log(body);
-    let first_name = (`${body.data[0].profile.first_name}`);
-    let last_name = (`${body.data[0].profile.last_name}`);
-    const name = first_name + last_name;
+    let first_name = (`${body.data[3].profile.first_name}`);
+    let last_name = (`${body.data[3].profile.last_name}`);
+    let city = (`${body.data[3].practices[0].visit_address.city}`);
+    let street = (`${body.data[3].practices[0].visit_address.street}`);
+    let state = (`${body.data[3].practices[0].visit_address.state}`);
+    let zip = (`${body.data[3].practices[0].visit_address.zip}`);
+
+
+    const name = first_name + last_name + city + street + state + zip;
     // console.log(body.meta.data.practices[]);
 
     $('#results1').text(name);
