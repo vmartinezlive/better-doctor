@@ -38,30 +38,12 @@ $(document).ready(function() {
       medicine = body.data[i].specialties[0].name ;
       bio = body.data[i].profile.bio;
 
+      $("#symptomsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine + "</li>");
       $("#doctorsList").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "<br>" + bio +"</li>");
-
-
-
-
-
-
-      console.log(address);
-
-    nameHTML.push(name + address );
-
-
-
+      // console.log(address);
+      
     }
 
-
-
-
-    // const name = firstName;
-    // console.log(body.meta.data.practices[]);
-
-    // $('#results1').text(name);
-    // console.log('results1');
-    $('#results2').text(`${doctor}`);
 }, function(error) {
     $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
