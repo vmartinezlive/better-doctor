@@ -20,12 +20,13 @@ $(document).ready(function() {
 
     promise.then(function(response) {
     let body =JSON.parse(response);
-    // console.log(body);
+    console.log(body);
 
     let name = [];
     let address = [];
     let medicine = [];
     let bio = [];
+    let img = [];
     const nameHTML = [];
 
     var i = 0;
@@ -37,11 +38,9 @@ $(document).ready(function() {
 
       medicine = body.data[i].specialties[0].name ;
       bio = body.data[i].profile.bio;
-
-      $("#symptomsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine + "</li>");
-      $("#doctorsList").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "<br>" + bio +"</li>");
-      // console.log(address);
-      
+      img = body.data[i].profile.image_url ;
+    console.log(body.data[i].profile.image_url);
+      $("#doctorsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "</li>");
     }
 
 }, function(error) {
