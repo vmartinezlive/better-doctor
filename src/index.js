@@ -25,8 +25,6 @@ $(document).ready(function() {
     let name = [];
     let address = [];
     let medicine = [];
-    let bio = [];
-    let img = [];
     const nameHTML = [];
 
     var i = 0;
@@ -37,14 +35,12 @@ $(document).ready(function() {
       body.data[i].practices[0].phones[0].number;
 
       medicine = body.data[i].specialties[0].name ;
-      bio = body.data[i].profile.bio;
-      img = body.data[i].profile.image_url ;
-    console.log(body.data[i].profile.image_url);
+
       $("#doctorsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "</li>");
     }
 
 }, function(error) {
-    $('.showErrors').text(`There was an error processing your request: ${error.message}`);
+    $('.showErrors').text("There was an error processing your request");
     });
   });
 });
