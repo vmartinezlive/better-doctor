@@ -10,8 +10,10 @@ This website will let users may enter a medical issue (ie: “sore throat”, "r
 ## Setup/Installation Requirements
 
 * Go to GitHub and clone https://github.com/vmartinezlive/better-doctor project. Use project url to clone project.
-* run npm install to install dependencies
-* run npm run start to build and start the dev server
+* User must have own api to use this application: Place your token in an .env file at the top level of your directory. name your API exports.apiKey in .env
+* Run npm install to install dependencies
+* Run npm run start to build and start the dev server
+
 
 ## Objectives:
 
