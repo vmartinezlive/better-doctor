@@ -21,23 +21,30 @@ $(document).ready(function() {
     promise.then(function(response) {
     let body =JSON.parse(response);
     console.log(body);
+    if (body.data.length === 0) {
+      $("#doctorsResult").text("There is no Doctor found");
+    } else {
 
-    let name = [];
-    let address = [];
-    let medicine = [];
-    const nameHTML = [];
+      let name = [];
+      let address = [];
+      let medicine = [];
+      const nameHTML = [];
 
-    var i = 0;
-    for(i in body.data) {
-      name = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
 
-      address = body.data[i].practices[0].visit_address.city + " " + body.data[i].practices[0].visit_address.street + " " + body.data[i].practices[0].visit_address.state_long + " " + body.data[i].practices[0].visit_address.zip + " " + "Phone: " +
-      body.data[i].practices[0].phones[0].number;
 
-      medicine = body.data[i].specialties[0].name ;
+      var i = 0;
+      for(i in body.data) {
+        name = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
 
-      $("#doctorsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "</li>");
+        address = body.data[i].practices[0].visit_address.city + " " + body.data[i].practices[0].visit_address.street + " " + body.data[i].practices[0].visit_address.state_long + " " + body.data[i].practices[0].visit_address.zip + " " + "Phone: " +
+        body.data[i].practices[0].phones[0].number;
+
+        medicine = body.data[i].specialties[0].name ;
+
+        $("#doctorsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "</li>");
+      }
     }
+
 
 }, function(error) {
     $('.showErrors').text("There was an error processing your request");
