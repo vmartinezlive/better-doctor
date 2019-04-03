@@ -11,6 +11,9 @@ $(document).ready(function() {
     event.preventDefault();
     const symptoms = $('#inputSymptoms').val();
     const doctor = $('#inputDoctor').val();
+    $('#symptoms').val("");
+    $('#doctor').val("");
+
     // console.log("I'm here");
 
 
@@ -30,8 +33,6 @@ $(document).ready(function() {
       let medicine = [];
       const nameHTML = [];
 
-
-
       var i = 0;
       for(i in body.data) {
         name = body.data[i].profile.first_name + " " + body.data[i].profile.last_name;
@@ -42,12 +43,14 @@ $(document).ready(function() {
         medicine = body.data[i].specialties[0].name ;
 
         $("#doctorsResult").append("<li>" + name + "<br>" + address + "<br>" + medicine +  "</li>");
+        $("#resetForm").click(function(){                    $("#doctor-form").get(0).reset;
+        });
       }
     }
 
 
 }, function(error) {
-    $('.showErrors').text("There was an error processing your request");
+    $('#showErrors').text("There was an error processing your request");
     });
   });
 });
